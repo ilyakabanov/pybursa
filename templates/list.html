@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>PhoneBook</title>
+    <title>Список</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
@@ -33,8 +33,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/list/">List</a></li>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/list/">List</a></li>
             <li><a href="/list/item/">Item</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -43,13 +43,45 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Телефонная книга</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+        <h2 class="sub-header">Список</h2>
+        <div class="table-responsive">
+           <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ФИО</th>
+                  <th>Мобильный</th>
+                  <th>Домашний</th>
+                  <th>Адрес</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Бутенко Ирина Дмитриевна</td>
+                  <td>+7 (939) 868-32-73</td>
+                  <td>-</td>
+                  <td>Россия, Москва, Октябрьская, 239</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Ситников Евгений Андреевич</td>
+                  <td>+7 (939) 867-56-14</td>
+                  <td>-</td>
+                  <td>Россия, Москва, Октябрьская, 138</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Жуков Сергей Владимирович</td>
+                  <td>+7 (940) 735-454-23</td>
+                  <td>-</td>
+                  <td>Россия, Москва, Лесная, 153</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
 
     </div><!-- /.container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
