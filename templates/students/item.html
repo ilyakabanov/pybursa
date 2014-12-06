@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Контакт</title>
+    <title>Студент</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
@@ -29,13 +29,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PhoneBook</a>
+          <a class="navbar-brand" href="/">PyBusa</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/list/">List</a></li>
-            <li class="active"><a href="/list/item/">Item</a></li>
+            <li class="active"><a href="{% url 'students:index' %}">Студенты</a></li>
+            <li><a href="{% url 'courses:index' %}">Курсы</a></li>
+            <li><a href="{% url 'coaches:index' %}">Тренеры</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -43,7 +43,7 @@
 
     <div class="container">
 
-        <h1>Контакт</h1>
+        <h2>{{ student }}</h2>
         <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder text-center">
                 <img alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc0LjY4NzUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
@@ -52,20 +52,20 @@
             <div class="col-xs-6 col-sm-9 placeholder">
                 <table class="table">
                     <tr>
-                        <td>ФИО:</td>
-                        <td>Бутенко Ирина Дмитриевна</td>
-                    </tr>
-                    <tr>
                         <td>Мобильный:</td>
-                        <td>+7 (939) 868-32-73</td>
+                        <td>{{ student.phone }}</td>
                     </tr>
                     <tr>
-                        <td>Домашний:</td>
-                        <td>-</td>
+                        <td>Email:</td>
+                        <td>{{ student.email }}</td>
                     </tr>
                     <tr>
-                        <td>Адрес:</td>
-                        <td>Россия, Москва, Октябрьская, 239</td>
+                        <td>Пакет:</td>
+                        <td>{{ student.package }}</td>
+                    </tr>
+                    <tr>
+                        <td>Курс:</td>
+                        <td><a href="{% url 'courses:detail' student.course.id %}">{{ student.course }}</a></td>
                     </tr>
                 </table>
             </div>
