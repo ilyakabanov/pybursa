@@ -35,6 +35,14 @@
                     </td>
                 </tr>
             {% endif %}
+            {% if course.venue %}
+                            <tr>
+                    <td>Venue</td>
+                    <td>
+                       {{ course.venue }}
+                    </td>
+                </tr>
+            {% endif %}
             </tbody>
         </table>
     </div>

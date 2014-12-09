@@ -19,7 +19,7 @@
                 <td><a href="{% url 'course_info' course.id %}">
                     {{ course.name }}</a>
                 </td>
-                <td>{{ course.technology }}</td>
+                <td>{{ course.get_technology_display }}</td>
                 <td>
                     <a href='{% url 'coach_info' course.coach.id %}'>
                         {{ course.coach }}
