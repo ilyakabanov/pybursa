@@ -17,10 +17,10 @@ class Course(models.Model):
     )
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    coach = models.ForeignKey(Coach, limit_choices_to={'type': 'coach'})
+    coach = models.ForeignKey(Coach, limit_choices_to={'role': 'coach'})
     assistant = models.ForeignKey(
         Coach,
-        limit_choices_to={'type': 'asist'},
+        limit_choices_to={'role': 'asist'},
         related_name='assistant',
     )
     start_date = models.DateField()

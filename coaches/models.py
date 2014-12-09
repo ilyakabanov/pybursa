@@ -11,13 +11,13 @@ class Coach(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=15)
 
-    TYPE_CHOICES = (
+    ROLE_CHOICES = (
         ('coach', 'Тренер'),
         ('asist', 'Асистент'),
     )
-    type = models.CharField(
+    role = models.CharField(
         max_length=5,
-        choices=TYPE_CHOICES,
+        choices=ROLE_CHOICES,
         default='coach',
     )
 

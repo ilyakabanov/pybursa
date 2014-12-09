@@ -62,7 +62,7 @@
                 </table>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ coach.get_type_display }}</div>
+                    <div class="panel-heading">{{ coach.get_role_display }}</div>
                     <ul class="list-group">
                         {% for course in coach.course_set.all %}
                             <li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></li>
