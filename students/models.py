@@ -23,7 +23,7 @@ class Student(models.Model):
         default='standart',
     )
 
-    course = models.ForeignKey(Course)
+    courses = models.ManyToManyField(Course)
 
     def __unicode__(self):
         return self.surname + ' ' + self.name

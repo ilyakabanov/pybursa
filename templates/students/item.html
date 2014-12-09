@@ -63,11 +63,18 @@
                         <td>Пакет:</td>
                         <td>{{ student.package }}</td>
                     </tr>
-                    <tr>
-                        <td>Курс:</td>
-                        <td><a href="{% url 'courses:detail' student.course.id %}">{{ student.course }}</a></td>
-                    </tr>
                 </table>
+				
+				{% if student.courses.all %}
+				<div class="panel panel-default">
+					<div class="panel-heading">Курсы</div>
+					<ul class="list-group">
+						{% for course in student.courses.all %}
+							<li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
             </div>
         </div>
 
