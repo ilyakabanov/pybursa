@@ -1,101 +1,50 @@
-{% load static %}<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+{% extends "courses/base.html" %}
 
-    <title>{{ course.name }}</title>
+{% block title %}{{ course.name }}{% endblock %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static "css/starter-template.css" %}" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">PyBusa</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'students:index' %}">Студенты</a></li>
-            <li class="active"><a href="{% url 'courses:index' %}">Курсы</a></li>
-            <li><a href="{% url 'coaches:index' %}">Тренеры</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-
-        <h2>{{ course }}</h2>
-        <table class="table">
-            <tr>
-                <td>Язык программирования:</td>
-                <td>{{ course.get_lang_display }}</td>
-            </tr>
-            <tr>
-                <td>Описание:</td>
-                <td>{{ course.description }}</td>
-            </tr>
-            <tr>
-                <td>Тренер:</td>
-                <td><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach }}</a></td>
-            </tr>
-            <tr>
-                <td>Асистент:</td>
-                <td><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant }}</a></td>
-            </tr>
-            <tr>
-                <td>Дата начала:</td>
-                <td>{{ course.start_date }}</td>
-            </tr>
-            <tr>
-                <td>Дата окончания:</td>
-                <td>{{ course.end_date }}</td>
-            </tr>
-            {% if course.venue %}
-            <tr>
-                <td>Место:</td>
-                <td>{{ course.venue }}</td>
-            </tr>
-            {% endif %}
-        </table>
-        
-        {% if course.student_set.all %}
-        <div class="panel panel-default">
-            <div class="panel-heading">Студенты</div>
-            <ul class="list-group">
-                {% for student in course.student_set.all %}
-                    <li class="list-group-item"><a href="{% url 'students:detail' student.id %}">{{ student }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+{% block content %}
+    <h2>{{ course }}</h2>
+    <table class="table">
+        <tr>
+            <td>Язык программирования:</td>
+            <td>{{ course.get_lang_display }}</td>
+        </tr>
+        <tr>
+            <td>Описание:</td>
+            <td>{{ course.description }}</td>
+        </tr>
+        <tr>
+            <td>Тренер:</td>
+            <td><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach }}</a></td>
+        </tr>
+        <tr>
+            <td>Асистент:</td>
+            <td><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant }}</a></td>
+        </tr>
+        <tr>
+            <td>Дата начала:</td>
+            <td>{{ course.start_date }}</td>
+        </tr>
+        <tr>
+            <td>Дата окончания:</td>
+            <td>{{ course.end_date }}</td>
+        </tr>
+        {% if course.venue %}
+        <tr>
+            <td>Место:</td>
+            <td>{{ course.venue }}</td>
+        </tr>
         {% endif %}
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-  
-</body>
-</html>
+    </table>
+    
+    {% if course.student_set.all %}
+    <div class="panel panel-default">
+        <div class="panel-heading">Студенты</div>
+        <ul class="list-group">
+            {% for student in course.student_set.all %}
+                <li class="list-group-item"><a href="{% url 'students:detail' student.id %}">{{ student }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+{% endblock %}
