@@ -69,6 +69,12 @@
                 <td>Дата окончания:</td>
                 <td>{{ course.end_date }}</td>
             </tr>
+            {% if course.venue %}
+            <tr>
+                <td>Место:</td>
+                <td>{{ course.venue }}</td>
+            </tr>
+            {% endif %}
         </table>
         
         {% if course.student_set.all %}

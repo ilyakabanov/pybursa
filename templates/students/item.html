@@ -63,18 +63,38 @@
                         <td>Пакет:</td>
                         <td>{{ student.package }}</td>
                     </tr>
+                    {% if student.dossier %}
+                    <tr>
+                        <td>Адрес:</td>
+                        <td>{{ student.dossier.adress }}</td>
+                    </tr>
+                    <tr>
+                        <td>Любимый цвет:</td>
+                        <td>{{ student.dossier.get_color_display }}</td>
+                    </tr>
+                    {% endif %}
                 </table>
-				
-				{% if student.courses.all %}
-				<div class="panel panel-default">
-					<div class="panel-heading">Курсы</div>
-					<ul class="list-group">
-						{% for course in student.courses.all %}
-							<li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></li>
-						{% endfor %}
-					</ul>
-				</div>
-				{% endif %}
+                
+                {% if student.courses.all %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Курсы</div>
+                    <ul class="list-group">
+                        {% for course in student.courses.all %}
+                            <li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if student.dossier %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Нелюбимые курсы</div>
+                    <ul class="list-group">
+                        {% for course in student.dossier.unloved_courses.all %}
+                            <li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
             </div>
         </div>
 

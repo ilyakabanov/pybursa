@@ -22,6 +22,7 @@ class Coach(models.Model):
     )
 
     user = models.ForeignKey(User)
+    dossier = models.OneToOneField('students.Dossier', blank=True, null=True)
 
     def __unicode__(self):
         return self.surname + ' ' + self.name

@@ -59,6 +59,16 @@
                         <td>Email:</td>
                         <td>{{ coach.email }}</td>
                     </tr>
+                    {% if coach.dossier %}
+                    <tr>
+                        <td>Адрес:</td>
+                        <td>{{ coach.dossier.adress }}</td>
+                    </tr>
+                    <tr>
+                        <td>Любимый цвет:</td>
+                        <td>{{ coach.dossier.get_color_display }}</td>
+                    </tr>
+                    {% endif %}
                 </table>
 
                 <div class="panel panel-default">
@@ -72,6 +82,17 @@
                         {% endfor %}
                     </ul>
                 </div>
+                
+                {% if coach.dossier %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Нелюбимые курсы</div>
+                    <ul class="list-group">
+                        {% for course in coach.dossier.unloved_courses.all %}
+                            <li class="list-group-item"><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
 
             </div>
         </div>

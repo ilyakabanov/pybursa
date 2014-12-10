@@ -2,8 +2,6 @@
 
 from django.db import models
 
-from courses.models import Course
-
 
 class Student(models.Model):
     name = models.CharField(max_length=255)
@@ -23,7 +21,32 @@ class Student(models.Model):
         default='standart',
     )
 
-    courses = models.ManyToManyField(Course)
+    courses = models.ManyToManyField('courses.Course')
+    dossier = models.OneToOneField('students.Dossier', blank=True, null=True)
 
     def __unicode__(self):
         return self.surname + ' ' + self.name
+
+
+class Dossier(models.Model):
+    adress = models.ForeignKey('courses.Address')
+    unloved_courses = models.ManyToManyField('courses.Course', blank=True, null=True)
+    
+    COLOR_CHOICES = (
+        ('ref', 'Красный'),
+        ('orange', 'Оранжевый'),
+        ('yellow', 'Желтый'),
+        ('green', 'Зеленый'),
+        ('lightblue', 'Голубой'),
+        ('blue', 'Синий'),
+        ('purple', 'Фиолетовый'),
+    )
+    color = models.CharField(
+        max_length=10,
+        choices=COLOR_CHOICES,
+        default='green',
+    )
+
+
+    def __unicode__(self):
+        return u"Досье №%d" % self.id
