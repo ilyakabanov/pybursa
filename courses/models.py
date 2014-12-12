@@ -17,6 +17,7 @@ class Course(models.Model):
         default='python'
     )
     name = models.CharField('Название', max_length=255)
+    slug = models.SlugField('URL', default='')
     description = models.CharField('Описание', max_length=255)
     coach = models.ForeignKey(
         'coaches.Coach',
