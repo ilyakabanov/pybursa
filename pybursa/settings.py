@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'students',
+    'courses',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pybusra.urls'
+ROOT_URLCONF = 'pybursa.urls'
 
-WSGI_APPLICATION = 'pybusra.wsgi.application'
+WSGI_APPLICATION = 'pybursa.wsgi.application'
 
 
 # Database
