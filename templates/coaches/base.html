@@ -1,3 +1,5 @@
 {% extends "base.html" %}
 
-{% block menu_coaches %} class="active"{% endblock %}
+{% block header %}
+{% include 'header.html' with app='coaches' %}
+{% endblock %}
