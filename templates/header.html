@@ -11,15 +11,27 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'students_list' %}">Students</a></li>
-                <li><a href="{% url 'courses_list' %}">Courses</a></li>
-                <li><a href="{% url 'coaches_list' %}">Coaches</a></li>
+                <li
+                        {% ifequal active "students" %}
+                            class="active"
+                        {% endifequal %}>
+                    <a href="{% url 'students_list' %}">Students</a>
+                </li>
+                <li
+                        {% ifequal active "courses" %}
+                            class="active"
+                        {% endifequal %}>
+                    <a href="{% url 'courses_list' %}">Courses</a>
+                </li>
+                <li
+                        {% ifequal active "coaches" %}
+                            class="active"
+                        {% endifequal %}>
+                    <a href="{% url 'coaches_list' %}">Coaches</a>
+                </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>
