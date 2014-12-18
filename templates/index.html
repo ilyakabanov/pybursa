@@ -1,78 +1,55 @@
-{#{% extends "base.html" %}#}
-{#{% block content %}#}
-{#<div class="jumbotron">#}
-{#	<div class="container">#}
-{#		<h1>Courses information system</h1>#}
-{#		<p>Here you can see information about students, courses and coaches</p>#}
-{#	</div>#}
-{#</div>#}
-{#{% endblock %}#}
+{% extends "base.html" %}
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
 
 
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <title>PyBursa courses</title>
-
-    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
-    <link rel="shortcut icon" href=""/>
-
-    <!-- scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-
-    <!-- typekit -->
-    <script src="http://use.typekit.com/ypv0huv.js"></script>
-    <script>try {
-        Typekit.load();
-    } catch (e) {
-    }</script>
-
-</head>
-<body>
-
-<div id="balloon"></div>
-
-<div id="background">
-    <div id="container">
-        <h2>You can see all our courses here</h2>
-
-        <section id="instructions">
-
-            <h3>Our pages</h3>
-
-            <div id="uploadWrapper">
-                <a href="{% url 'coaches_list' %}"
-                   id="upload-btn">Coaches</a><br/>
-            </div>
-            <br><br><br><br><br>
-
-            <div id="uploadWrapper">
-                <a href="{% url 'courses_list' %}"
-                   id="upload-btn">Courses</a><br/>
-            </div>
-            <br><br><br><br><br>
-
-            <div id="uploadWrapper">
-                <a href="{% url 'students_list' %}" id="upload-btn">Students</a><br/>
-            </div>
-
-
-        </section>
-
-
-    </div>
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>Courses information system</h1>
+		<p>Here you can see information about students, courses and coaches</p>
+	</div>
 </div>
+{% endblock %}
 
-</body>
-
-
-</html>
+{##}
+{#{% load staticfiles %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="utf-8">#}
+{#    <title>PyBursa courses</title>#}
+{#    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>#}
+{#    <link rel="shortcut icon" href=""/>#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>#}
+{#    <script src="{% static 'js/main.js' %}"></script>#}
+{#</head>#}
+{#<body>#}
+{#<div id="balloon"></div>#}
+{#<div id="background">#}
+{#    <div id="container">#}
+{#        <h2>You can see all our courses here</h2>#}
+{#        <section id="instructions">#}
+{#            <h3>Our pages</h3>#}
+{##}
+{#            <div id="uploadWrapper">#}
+{#                <a href="{% url 'coaches_list' %}"#}
+{#                   id="upload-btn">Coaches</a><br/>#}
+{#            </div>#}
+{#            <br><br><br><br><br>#}
+{##}
+{#            <div id="uploadWrapper">#}
+{#                <a href="{% url 'courses_list' %}"#}
+{#                   id="upload-btn">Courses</a><br/>#}
+{#            </div>#}
+{#            <br><br><br><br><br>#}
+{##}
+{#            <div id="uploadWrapper">#}
+{#                <a href="{% url 'students_list' %}" id="upload-btn">Students</a><br/>#}
+{#            </div>#}
+{#        </section>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
