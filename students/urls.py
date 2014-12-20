@@ -1,9 +1,12 @@
 from django.conf.urls import patterns, include, url
-from students.views import students_list, students_item
+from students import views
 
 
 urlpatterns = patterns(
     '',
-    url(r'^$', students_list, name="index"),
-    url(r'^(?P<student_id>\d+)/$', students_item, name="detail"),
+    url(r'^$', views.students_list, name="index"),
+    url(r'^(?P<student_id>\d+)/$', views.students_item, name="detail"),
+    url(r'^add/$', views.students_add, name="add"),
+    url(r'^edit/(?P<student_id>\d+)/$', views.students_edit, name="edit"),
+    url(r'^delete/(?P<student_id>\d+)/$', views.students_delete, name="delete"),
 )

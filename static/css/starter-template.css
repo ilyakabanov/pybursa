@@ -5,3 +5,8 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+.alert-form {
+  padding: 7px 10px;
+  margin-bottom: 0;
+  border-radius: 4px;
+}
