@@ -24,10 +24,13 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['127.0.0.1']
 
-
+ADMINS = (("Aleksey Radchenko", "dixon.che@gmail.com"),)
 # Application definition
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = "1025"
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -36,12 +39,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'django_extensions',
     'students',
     'courses',
+
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    'django.middleware.locale.LocaleMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -64,15 +73,21 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('en', _('English')),
+)
+
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -87,3 +102,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = ''
+STATIC_ROOT = ''
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+       'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+
+        
+    },
+    'loggers': {
+        'pybursa': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+    
+        },        
+},}

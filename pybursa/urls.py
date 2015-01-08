@@ -1,18 +1,13 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
-# from django.contrib.admin import AdminSite
-
-# class PBAdminSite(AdminSite):
-#     site_header = 'PyBursa admin'
-
-# pb_admin_site = PBAdminSite(name='pybursaadmin')
-
+from pybursa.views import contact
 
 urlpatterns = patterns('',
 
     url(r'^students/', include('students.urls')),
+    url(r'^courses/', include('courses.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^pbadmin/', include(pb_admin_site.urls)),
+    url(r'^contact/$', contact, name='contact-us'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
 )

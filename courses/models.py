@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Course(models.Model):
@@ -8,3 +9,6 @@ class Course(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def is_in_future(self):
+    	return self.start_date > timezone.now().date()
